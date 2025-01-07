@@ -35,11 +35,12 @@ int main(int argc, char** argv) {
 
     char cmd[BUFSIZE];
 
-    long int fileSize = getSizeOfFile(argv[1]);
+
+    char const * file_name = argv[1];
+    long int fileSize = getSizeOfFile(file_name);
 
     if(fileSize != -1) {
         fprintf(stdout, "File size: %li.\n", fileSize);
-        return
     } else {
         fprintf(stderr, "Failed to open file %s\n", file_name);
     }
