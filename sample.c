@@ -11,10 +11,10 @@ int main(int argc, char** argv) {
         fprintf(stderr, "Please provide the address of a file as an input.\n");
         return -1;
     }
-    
+
     char cmd[BUFSIZE];
 
-    int printedCharacters = snprintf(cmd, BUFSIZE, "wc -c < %s", argv[1])
+    int printedCharacters = snprintf(cmd, BUFSIZE, "wc -c < %s", argv[1]);
 
     if (printedCharacters>=0 && printedCharacters<BUFSIZE)
     {
