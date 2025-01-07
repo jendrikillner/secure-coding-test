@@ -12,6 +12,16 @@ int main(int argc, char** argv) {
         return -1;
     }
     char cmd[BUFSIZE] = "wc -c < ";
+    
+    // firstly we need to ensure that the string will not overflow the available size
+    uint baseStringLength = strlen(cmd);
+    uint inputStringLength = strlen(argv[1]);
+
+    if(baseStringLength + inputStringLength + 1 > BUFSIZE) {
+        fprintf(stderr, "filename is too long");
+        return -1;
+    }
+
     strcat(cmd, argv[1]);
     system(cmd);
 }
