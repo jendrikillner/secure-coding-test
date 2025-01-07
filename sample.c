@@ -11,17 +11,13 @@ int main(int argc, char** argv) {
         fprintf(stderr, "Please provide the address of a file as an input.\n");
         return -1;
     }
-    char cmd[BUFSIZE] = "wc -c < ";
     
-    // firstly we need to ensure that the string will not overflow the available size
-    uint baseStringLength = strlen(cmd);
-    uint inputStringLength = strlen(argv[1]);
+    char cmd[BUFSIZE];
 
-    if(baseStringLength + inputStringLength + 1 > BUFSIZE) {
-        fprintf(stderr, "filename is too long");
-        return -1;
+    int printedCharacters = snprintf(cmd, BUFSIZE, "wc -c < %s", argv[1])
+
+    if (printedCharacters>=0 && printedCharacters<BUFSIZE)
+    {
+        system(cmd);
     }
-
-    strcat(cmd, argv[1]);
-    system(cmd);
 }
